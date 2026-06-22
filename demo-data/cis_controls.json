@@ -1,0 +1,16 @@
+[
+  {
+    "id": "CIS-1.1",
+    "title": "S3 bucket encryption",
+    "status": "fail",
+    "resource": "s3://demo-logs",
+    "remediation": "Enable SSE-KMS"
+  },
+  {
+    "id": "CIS-2.1",
+    "title": "MFA on root",
+    "status": "pass",
+    "resource": "aws-account",
+    "remediation": "N/A"
+  }
+]
