@@ -1,0 +1,48 @@
+{
+  "answer": "Posture check complete: 1 findings",
+  "trace": [
+    {
+      "tool": "list_controls",
+      "count": 2
+    },
+    {
+      "tool": "check_cis_control",
+      "control_id": "CIS-1.1",
+      "result": {
+        "control_id": "CIS-1.1",
+        "status": "fail",
+        "resource": "s3://demo-logs",
+        "remediation": "Enable SSE-KMS"
+      }
+    },
+    {
+      "tool": "format_findings",
+      "output": {
+        "findings": [
+          {
+            "control_id": "CIS-1.1",
+            "status": "fail",
+            "resource": "s3://demo-logs",
+            "remediation": "Enable SSE-KMS"
+          }
+        ],
+        "severity_counts": {
+          "fail": 1
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "findings": [
+      {
+        "control_id": "CIS-1.1",
+        "status": "fail",
+        "resource": "s3://demo-logs",
+        "remediation": "Enable SSE-KMS"
+      }
+    ],
+    "severity_counts": {
+      "fail": 1
+    }
+  }
+}

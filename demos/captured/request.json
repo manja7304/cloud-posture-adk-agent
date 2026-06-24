@@ -1,0 +1,6 @@
+{
+  "query": "check posture",
+  "context": {
+    "control_id": "CIS-1.1"
+  }
+}

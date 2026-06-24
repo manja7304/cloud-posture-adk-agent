@@ -1,0 +1,66 @@
+# Terminal replay — Cloud Posture ADK Agent
+# Captured: 2026-06-24 17:41:53 UTC · USE_MOCK_LLM=true
+
+$ cd cloud-posture-adk-agent
+$ export USE_MOCK_LLM=true LLM_PROVIDER=mock
+$ python scripts/run_demo.py
+
+▸ Agent API demo
+  POST /api/v1/agent/run
+Request:
+{
+  "query": "check posture",
+  "context": {
+    "control_id": "CIS-1.1"
+  }
+}
+
+HTTP 200
+{
+  "answer": "Posture check complete: 1 findings",
+  "trace": [
+    {
+      "tool": "list_controls",
+      "count": 2
+    },
+    {
+      "tool": "check_cis_control",
+      "control_id": "CIS-1.1",
+      "result": {
+        "control_id": "CIS-1.1",
+        "status": "fail",
+        "resource": "s3://demo-logs",
+        "remediation": "Enable SSE-KMS"
+      }
+    },
+    {
+      "tool": "format_findings",
+      "output": {
+        "findings": [
+          {
+            "control_id": "CIS-1.1",
+            "status": "fail",
+            "resource": "s3://demo-logs",
+            "remediation": "Enable SSE-KMS"
+          }
+        ],
+        "severity_counts": {
+          "fail": 1
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "findings": [
+      {
+        "control_id": "CIS-1.1",
+        "status": "fail",
+        "resource": "s3://demo-logs",
+        "remediation": "Enable SSE-KMS"
+      }
+    ],
+    "severity_counts": {
+      "fail": 1
+    }
+  }
+}
